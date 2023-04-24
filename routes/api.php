@@ -24,3 +24,4 @@ Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 Route::get('admin', [AuthController::class,'test'])->middleware(['auth:api','isAdmin']);
 
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:api');

@@ -59,7 +59,14 @@ class AuthController extends BaseController
 
         return $this->sendError('Unauthorized', 'Invalid credentials.');
     }
+    public function logout()
+{
+    Auth::user()->token()->revoke();
+
+    return response()->json(['message' => 'Successfully logged out']);
+}
     public function test(){
         return Auth::check();
-    }
+    } 
+    
 }
