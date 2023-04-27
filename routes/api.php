@@ -22,6 +22,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
-Route::get('admin', [AuthController::class,'test'])->middleware(['auth:api','isAdmin']);
+Route::post('password/email',  [AuthController::class, 'userForgetPassword']);
+Route::post('password/code/check', [AuthController::class, 'userCheckCode']);
+Route::post('password/reset', [AuthController::class, 'userResetPassword']);
+// Route::get('admin', [AuthController::class,'test'])->middleware(['auth:api','isAdmin']);
 
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:api');
